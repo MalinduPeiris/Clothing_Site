@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionRack POS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/example.css">
+</head>
+
+<body class="bg-light">
+
+    <!-- HEADER -->
+    <header class="border-bottom bg-white py-3 shadow-sm">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+
+            <!-- Logo + Name -->
+            <div class="d-flex align-items-center gap-3">
+                <div class="brand-logo"></div>
+                <h4 class="fw-bold m-0">FashionRack POS</h4>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-box d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">search</span>
+                <input type="text" class="form-control search-input" placeholder="Search products by name or SKU...">
+            </div>
+
+            <!-- Profile -->
+            <div class="d-flex align-items-center gap-3">
+                <p class="fw-semibold m-0">Jane Doe</p>
+                <div class="profile-img"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PAGE LAYOUT -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+
+            <!-- MAIN CONTENT (Left Section) -->
+            <div class="col-lg-8">
+
+                <!-- CATEGORY TABS -->
+                <ul class="nav nav-tabs mb-4 category-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bottoms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Outerwear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="#">Sale</a>
+                    </li>
+                </ul>
+
+                <!-- PRODUCT GRID -->
+                <div class="row g-4">
+
+                    <!-- PRODUCT CARD 1 -->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-card shadow-card">
+                            <div class="product-img"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHynur-webP5vTeO0ISD06IgYI-teumhLv8p979hQkSK-lL_QvYZdZ29cmBOfQDcLEk5WkccH2wetyvLHcystB13YCtmsX2i4kB7DgFSu-HzvSAyrBLx5WY1o6iI9tqpiHk9ypNDPLKJ6jWM7jeLQT29zUPgaZFR5kh-NDFQ1zjejR0ZRd82r87shxxXWzgjbrch-leO1uDTLa5ALkj652FzOv0RhIK0hufjbJOjxuCicxnItGovdgbwhCN8mtVOFNZ33mudh17ps');">
+                            </div>
+                            <div class="overlay">
+                                <button class="btn btn-primary rounded-circle add-btn">
+                                    <span class="material-symbols-outlined">add</span>
+                                </button>
+                            </div>
+                            <div class="p-3">
+                                <h6 class="fw-bold product-name">Classic Crewneck Tee</h6>
+                                <p class="text-muted">$25.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRODUCT CARD 2 -->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-card shadow-card">
+                            <div class="product-img"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVqbGq9s5wnVX5jGrJolwNyTQYxH_sANGoNwOnNI69bBQUC4mhVXQBIBOnUXF34aIZkuqYTVcVrCHrlYqh_jB9B56_AADarJHqjFsiBU0a8kSER76dDJ3Z7iGHtqtdJkPou9VmB4AG85tUFUbqKv1HbQUNNW-lrV7XjlUi5eIJU9QAzeI7zdNRIdZyTi-urTX8Mt806rKywQ-27ScLbDR69JfY1brEXPSQggKdot1BdJSOLOq13ojXimohllZdF61osZuUTSn-wOk');">
+                            </div>
+                            <div class="overlay">
+                                <button class="btn btn-primary rounded-circle add-btn">
+                                    <span class="material-symbols-outlined">add</span>
+                                </button>
+                            </div>
+                            <div class="p-3">
+                                <h6 class="fw-bold product-name">Slim Fit Chinos</h6>
+                                <p class="text-muted">$60.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRODUCT CARD 3 -->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-card shadow-card">
+                            <div class="product-img"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeFDsxegdQvQiVVG8qkHy4W2u983JcCKo72zygep2h4LYaLhPhTrIGyN5eDVuFWqixncIpalRA8ySs4hGkRUFg3W-xlEdo9nMXv1aB_BEHHOhDAu9UET5OyXKfP8XB7MAxBFAVnO3aZHaxRJqveSgX8lj3X4U88KJsPpYEXpHGsgP40SjDinCkXXA0VzYpYc8SwQ5TB964d79MnKuyKLDTP-xh2DYUw-1AxbyqDpiB3dKmo9sKqbivpfDya-ANCczwM49rJBo88QM');">
+                            </div>
+                            <div class="overlay">
+                                <button class="btn btn-primary rounded-circle add-btn">
+                                    <span class="material-symbols-outlined">add</span>
+                                </button>
+                            </div>
+                            <div class="p-3">
+                                <h6 class="fw-bold product-name">Denim Jacket</h6>
+                                <p class="text-muted">$95.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More cards coming in part 1.2 if you want -->
+
+                </div>
+            </div>
+
+            <!-- RIGHT SIDEBAR (Order Summary) -->
+            <div class="col-lg-4 order-summary-container">
+
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
+                    <h4 class="fw-bold">Current Order</h4>
+                    <button class="btn btn-link text-danger fw-semibold d-flex align-items-center gap-1 p-0">
+                        <span class="material-symbols-outlined">delete</span> Clear All
+                    </button>
+                </div>
+
+                <!-- ORDERED ITEMS LIST -->
+                <div class="order-items mt-4">
+
+                    <!-- ITEM 1 -->
+                    <div class="order-item d-flex align-items-center p-3 mb-3 rounded shadow-sm">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDyQwypO0BFPdBECr8kpho49IsnjyMrPuWgSxT_xDbHmViAik8Mua7HxQEcCeITUvRVIECSlQ-fzlrpRw4WX73dVIM-R-stnJA-xU4Wlht3XO1grKGcY6yjhnYMpM0GllCd_DYrV-PD_4ROOmM_jSGIsbpjGWxkSH58IBvP5c-0t39QKGtkYVFKZ5O63mgFnx7D8tlMnbRjMwgRKoOh0yw1dlm0Viz-3HQdn2zHYCr4RhfasfoOUKEdt4Sjz7Y7DVgd6uTDdS_vqo"
+                            class="order-item-img">
+
+                        <div class="ms-3 flex-grow-1">
+                            <h6 class="fw-semibold m-0">Classic Crewneck Tee</h6>
+                            <p class="text-muted small m-0">Size: M, Color: White</p>
+                            <p class="text-muted small mt-1">$25.00</p>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="qty-btn">-</button>
+                            <span class="fw-bold">1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+
+                        <p class="fw-bold ms-3">$25.00</p>
+
+                        <button class="btn p-0 ms-2 text-danger">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+
+                    <!-- ITEM 2 -->
+                    <div class="order-item d-flex align-items-center p-3 mb-3 rounded shadow-sm">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdxSs4nGZObaH10KSqulmTbqaZGhFI7SPCjgcUplxTIkL3wy8eCVp4NdzjUAzP3-s5yCPWf9oYg4CLY85NB4SIZwzl1dH5O_2YoDSyewkiKgQF7f_Xw5Jfj5VSEvq_FW0UAxXD33qNLWtNjHlKiRMYTT7WR_yzphd8HI4gkMqjbgpA40qxotCK-xrJG34kRJeaFmXsthwAe9wAquoOoyP4SVVzSgK-oThUFmeMImLfLpjC_3J7PJzZ80MCrvJeygNSsDQ5Heihdyk"
+                            class="order-item-img">
+
+                        <div class="ms-3 flex-grow-1">
+                            <h6 class="fw-semibold m-0">Denim Jacket</h6>
+                            <p class="text-muted small m-0">Size: L, Color: Blue Wash</p>
+                            <p class="text-muted small mt-1">$95.00</p>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="qty-btn">-</button>
+                            <span class="fw-bold">1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+
+                        <p class="fw-bold ms-3">$95.00</p>
+
+                        <button class="btn p-0 ms-2 text-danger">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- BILLING SECTION -->
+                <div class="billing-box border-top pt-4 mt-3">
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="text-muted m-0">Discount</p>
+                        <button class="btn btn-link p-0 fw-semibold text-primary">Add Discount</button>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="text-muted m-0">Subtotal</p>
+                        <p class="fw-semibold m-0">$120.00</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="text-muted m-0">Tax (10%)</p>
+                        <p class="fw-semibold m-0">$12.00</p>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold m-0">Total</h5>
+                        <h3 class="fw-bold text-primary m-0">$132.00</h3>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <button
+                                class="btn btn-primary w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
+                                <span class="material-symbols-outlined">payments</span>
+                                Charge
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button
+                                class="btn btn-light w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
+                                <span class="material-symbols-outlined">receipt_long</span>
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let cart = [];
+
+        // Tax Rate (10%)
+        const TAX_RATE = 0.10;
+
+        // ======================================================
+        //  ADD ITEM TO CART
+        // ======================================================
+        function addToCart(name, price, img, size = "M", color = "Default") {
+
+            const existing = cart.find(item => item.name === name);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({
+                    name,
+                    price,
+                    img,
+                    qty: 1,
+                    size,
+                    color
+                });
+            }
+
+            updateCartUI();
+            updateTotals();
+        }
+
+        // ======================================================
+        //  REMOVE ITEM
+        // ======================================================
+        function removeItem(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartUI();
+            updateTotals();
+        }
+
+        // ======================================================
+        //  CHANGE QTY
+        // ======================================================
+        function changeQty(name, action) {
+            const item = cart.find(i => i.name === name);
+
+            if (!item) return;
+
+            if (action === "increase") {
+                item.qty++;
+            } else if (action === "decrease" && item.qty > 1) {
+                item.qty--;
+            }
+
+            updateCartUI();
+            updateTotals();
+        }
+
+        // ======================================================
+        //  CLEAR CART
+        // ======================================================
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+            updateTotals();
+        }
+
+        // ======================================================
+        //  UPDATE TOTALS
+        // ======================================================
+        function updateTotals() {
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                subtotal += item.price * item.qty;
+            });
+
+            const tax = subtotal * TAX_RATE;
+            const total = subtotal + tax;
+
+            document.getElementById("subtotalTxt").innerText = `$${subtotal.toFixed(2)}`;
+            document.getElementById("taxTxt").innerText = `$${tax.toFixed(2)}`;
+            document.getElementById("totalTxt").innerText = `$${total.toFixed(2)}`;
+        }
+
+        // ======================================================
+        //  UPDATE CART UI
+        // ======================================================
+        function updateCartUI() {
+            const container = document.getElementById("orderItems");
+            container.innerHTML = "";
+
+            cart.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "order-item d-flex align-items-center p-3 mb-3 rounded shadow-sm";
+                div.innerHTML = `
+            <img src="${item.img}" class="order-item-img">
+
+            <div class="ms-3 flex-grow-1">
+                <h6 class="fw-semibold m-0">${item.name}</h6>
+                <p class="text-muted small m-0">Size: ${item.size}, Color: ${item.color}</p>
+                <p class="text-muted small mt-1">$${item.price.toFixed(2)}</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <button class="qty-btn" onclick="changeQty('${item.name}', 'decrease')">-</button>
+                <span class="fw-bold">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${item.name}', 'increase')">+</button>
+            </div>
+
+            <p class="fw-bold ms-3">$${(item.price * item.qty).toFixed(2)}</p>
+
+            <button class="btn p-0 ms-2 text-danger" onclick="removeItem('${item.name}')">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        `;
+                container.appendChild(div);
+            });
+        }
+
+        // ======================================================
+        //  PAYMENT HANDLER
+        // ======================================================
+        function processPayment() {
+            if (cart.length === 0) {
+                alert("Cart is empty!");
+                return;
+            }
+            alert("Payment successful!");
+        }
+
+        // ======================================================
+        //  PREVIEW RECEIPT
+        // ======================================================
+        function previewReceipt() {
+            if (cart.length === 0) {
+                alert("No items to preview!");
+                return;
+            }
+
+            let receipt = "------ RECEIPT ------\n\n";
+
+            cart.forEach(item => {
+                receipt += `${item.name} (x${item.qty}) - $${(item.qty * item.price).toFixed(2)}\n`;
+            });
+
+            receipt += `\nSubtotal: ${document.getElementById("subtotalTxt").innerText}`;
+            receipt += `\nTax: ${document.getElementById("taxTxt").innerText}`;
+            receipt += `\nTotal: ${document.getElementById("totalTxt").innerText}`;
+            alert(receipt);
+        }
+    </script>
+</body>
+
+</html>
