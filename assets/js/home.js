@@ -373,19 +373,73 @@ function openCartItem() {
 
 }
 
+let orderModal = new bootstrap.Modal(document.getElementById("orderPopupModal"))
+ 
 function orderItemsBtn(){
     if(cartItemsArray.length>0){
+        let orderModal = new bootstrap.Modal(document.getElementById("orderPopupModal"));
+        orderModal.show();
+
 
     }else{
         console.log("order No.......");
         
         Swal.fire({
-            icon: "question",
-            title: "Oops.. No Items In Cart..",
-            text: "First Select Items..",
+            icon: "warning",
+            title: "Oops.. Cart is empty!!",
+            text: "Please add some items before ordering!!",
             footer: '<a href="index.html">Select Items</a>'
         });
     }
+}
+////////////////////////////////////////
+
+let ordersArray=[];
+
+function addOrder() {
+    let name = document.getElementById("customerName").value.trim();
+    let phone1 = document.getElementById("phone1").value.trim();
+    let phone2 = document.getElementById("phone2").value.trim();
+    let address = document.getElementById("address").value.trim();
+
+    if (name === "" || phone1 === "" || address === "") {
+        Swal.fire({
+            icon: "error",
+            title: "Missing Information",
+            text: "Name, phone number and address are required."
+        });
+        return;
+    }
+
+    if (!/^07\d{8}$/.test(phone1)) {
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Phone Number",
+            text: "Please enter a valid Sri Lankan mobile number (07XXXXXXXX)."
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: "success",
+        title: "Order Placed!",
+        text: "Your order has been successfully submitted.\nIf You Want You Can Canceled Your Order Within 24h",
+        confirmButtonText: "OK"
+    });
+
+    let newOrder = {
+        customerName: name,
+        phoneNumber1: phone1,
+        phoneNumber2: phone2,
+        address: address,
+        cartItems: cartItemsArray,
+        totalPrice: netPrice,
+        orderTime: new Date().toLocaleString()
+    };
+    ordersArray.push(newOrder);
+    
+    console.log(ordersArray);
+    
 }
 
 
@@ -394,92 +448,3 @@ function orderItemsBtn(){
 
 
 
-
-
-
-
-///////////////////////////////////
-// function setCartStructure(arrayIndex){
-// let cartItemsCountEle = document.getElementById("cartItemsCount");
-//     let cartItemsCount = cartItemsCountEle.innerText;
-//     let newCount = cartItemsCount;
-//     cartItemsCountEle.innerText = ++newCount;
-
-//     let rightMainDiv = document.getElementById("rightMainDiv");
-//     rightMainDiv.innerHTML += `
-//                         <div class="row mt-lg-4 addedProductCard">
-//                             <div class="col-3 mt-lg-0">
-//                                 <img class="addedProductCardImg mt-lg-3" src="${items[arrayIndex].imgLocation}" alt="">
-//                             </div>
-
-//                             <div class="col-3 d-grid justify-content-start">
-//                                 <h6 class="cartCardItemName mt-lg-3">${items[arrayIndex].name}</h6>
-//                                 <p class="cartCardPTag mt-1" id="card${arrayIndex}SizeBtn">Size : Select</p>
-//                                 <div class="d-flex ">
-//                                     <p class="cartCardPTag" id="card${arrayIndex}ColorBtn">Colour : </p>
-//                                     <button class="selectedColur mx-lg-2" id="selectedColur${arrayIndex}"></button>
-//                                 </div>
-//                                 <p class="cartCardPTag">${items[arrayIndex].price}</p>
-//                             </div>
-
-//                             <div class="col-lg-6 gap-2 ">
-
-//                                 <div class="row d-flex mt-lg-3">
-//                                     <div class="col-lg-12 gap-2 d-flex">
-//                                         <h6 class="sizesTitle mt-lg-1">Sizes</h6>
-//                                         <button class="rightSizesBtns" onclick="setSize(${arrayIndex},'XS')">XS</button>
-//                                         <button class="rightSizesBtns" onclick="setSize(${arrayIndex},'S')">S</button>
-//                                         <button class="rightSizesBtns" onclick="setSize(${arrayIndex},'M')">M</button>
-//                                         <button class="rightSizesBtns" onclick="setSize(${arrayIndex},'L')">L</button>
-//                                         <button class="rightSizesBtns" onclick="setSize(${arrayIndex},'XL')">XL</button>
-//                                         <button class="rightSizesBtns" onclick="setSize(${arrayIndex},'XXl')">XXL</button>
-//                                     </div>
-//                                 </div>
-
-//                                 <div class="row mt-lg-3">
-//                                     <div class="col-lg-12 gap-2 d-flex">
-//                                         <h6 class="sizesTitle">Color</h6>
-//                                         <button class="rightColorBtns1" onclick="setColor(${arrayIndex},'Black')"></button>
-//                                         <button class="rightColorBtns2" onclick="setColor(${arrayIndex},'White')"></button>
-//                                         <button class="rightColorBtns3" onclick="setColor(${arrayIndex},'Red')"></button>
-//                                         <button class="rightColorBtns4" onclick="setColor(${arrayIndex},'Yellow')"></button>
-//                                         <button class="rightColorBtns5" onclick="setColor(${arrayIndex},'Aqua')"></button>
-//                                         <button class="rightColorBtns6" onclick="setColor(${arrayIndex},'DarkBlue')"></button>
-//                                     </div>
-//                                 </div>
-
-//                                 <div class="row mt-lg-1 mb-lg-4">
-//                                     <div class="col-lg-6 d-flex increaseDeDiv gap-3">
-//                                         <button class="decreaseItemCountBtn" onclick="decreaseItm(arrayIndex)" id="decreaseItmCount">
-//                                             <svg class="increaseItemCountSvg" xmlns="http://www.w3.org/2000/svg"
-//                                                 viewBox="0 0 640 640">
-//                                                 <path
-//                                                     d="M96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320z" />
-//                                             </svg>
-//                                         </button>
-//                                         <p class="itemCount mt-lg-2" id="itemCountCard${arrayIndex}">1</p>
-//                                         <button class="increaseItemCountBtn" onclick="increaseItm(arrayIndex)" id="increaseItemCount">
-//                                             <svg class="increaseItemCountSvg" xmlns="http://www.w3.org/2000/svg"
-//                                                 viewBox="0 0 640 640">
-//                                                 <path
-//                                                     d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
-//                                             </svg>
-//                                         </button>
-//                                     </div>
-
-//                                     <div class="col-lg-6">
-//                                         <div class="d-flex mt-lg-2 align-middle gap-2">
-//                                             <h6 class="mt-lg-1" id="setPriceCard${arrayIndex}"></h6>
-
-//                                             <button class="itemCancelBtn" >X</button>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-
-//                             </div>
-
-//                         </div>
-    
-//     `;
-
-// }

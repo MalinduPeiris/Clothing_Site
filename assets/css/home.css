@@ -396,7 +396,7 @@
 }
  
 .codBtn{
-    width: 70%;
+    width: 73%;
     height: 140%;
     border-radius: .5rem;
     border: none;
@@ -415,7 +415,7 @@
     width: 6%;
     z-index: 3;
     top: 100%;
-    margin-left: -2.6rem;
+    margin-left: -2.5rem;
     display: flex;
     text-align: center ;
     align-items: center;
