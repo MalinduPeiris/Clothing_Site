@@ -31,6 +31,7 @@ let items = [
 
 
 let cartItemsArray=[];
+let ordersArray=[];
 
 
 loadCollection();
@@ -110,9 +111,11 @@ function setCartStructure(){
                             <div class="col-3 d-grid justify-content-start">
                                 <h6 class="cartCardItemName mt-lg-3">${cartItemsArray[index].name}</h6>
                                 <p class="cartCardPTag mt-1" id="card${index}SizeBtn">Size : Select</p>
+                                <p class="cartCardPTag mt-1" id="setSelectedSizeCorrect${index}" style="display: none;">0</p>
                                 <div class="d-flex ">
                                     <p class="cartCardPTag" id="card${index}ColorBtn">Colour : </p>
                                     <button class="selectedColur mx-lg-2" id="selectedColur${index}"></button>
+                                    <p class="cartCardPTag mt-1" id="setSelectedColorCorrect${index}" style="display: none;">0</p>
                                 </div>
                                 <p class="cartCardPTag">Rs.${cartItemsArray[index].price}</p>
                             </div>
@@ -335,11 +338,13 @@ function clearAllItemsInCart(){
 function setSize(index, size) {
     console.log(index + "   :   " + size);
     document.getElementById(`card${index}SizeBtn`).innerText = "Size : " + size;
+    document.getElementById(`setSelectedSizeCorrect${index}`).innerText="1";
 }
 
 function setColor(index, color) {
     console.log(index + "   :   " + color); 
     document.getElementById(`selectedColur${index}`).style.background = color;
+    document.getElementById(`setSelectedColorCorrect${index}`).innerText="1";
 } 
 
 function showDiscountField() {
@@ -376,25 +381,50 @@ function openCartItem() {
 let orderModal = new bootstrap.Modal(document.getElementById("orderPopupModal"))
  
 function orderItemsBtn(){
-    if(cartItemsArray.length>0){
-        let orderModal = new bootstrap.Modal(document.getElementById("orderPopupModal"));
-        orderModal.show();
-
-
-    }else{
-        console.log("order No.......");
-        
+    if (cartItemsArray.length === 0) {
         Swal.fire({
             icon: "warning",
             title: "Oops.. Cart is empty!!",
             text: "Please add some items before ordering!!",
             footer: '<a href="index.html">Select Items</a>'
         });
+        return
     }
+  
+    for (let index = 0; index < cartItemsArray.length; index++) {
+
+        let eleSize = document.getElementById(`setSelectedSizeCorrect${index}`);
+        let eleColor = document.getElementById(`setSelectedColorCorrect${index}`);
+
+        let sizeValue = eleSize.innerText.trim();
+        let colorValue = eleColor.innerText.trim();
+
+        if (sizeValue === "0") {
+            Swal.fire({
+                icon: "warning",
+                title: "Size Required",
+                text: `Please select a SIZE for item ${index + 1}!`
+            });
+            return;
+        }
+        if (colorValue === "0") {
+            Swal.fire({
+                icon: "warning",
+                title: "Color Required",
+                text: `Please select a COLOR for item ${index + 1}!`
+            });
+            return;
+        }
+    }
+
+
+    let orderModal = new bootstrap.Modal(document.getElementById("popupDisplayCusDetails"));
+    orderModal.show();
+ 
 }
 ////////////////////////////////////////
 
-let ordersArray=[];
+
 
 function addOrder() {
     let name = document.getElementById("customerName").value.trim();
@@ -418,7 +448,7 @@ function addOrder() {
             text: "Please enter a valid Sri Lankan mobile number (07XXXXXXXX)."
         });
         return;
-    }
+    } 
 
     Swal.fire({
         icon: "success",
@@ -436,10 +466,12 @@ function addOrder() {
         totalPrice: netPrice,
         orderTime: new Date().toLocaleString()
     };
-    ordersArray.push(newOrder);
-    
-    console.log(ordersArray);
-    
+    ordersArray.push(newOrder); 
+ 
+    // let modal = bootstrap.Modal.getInstance(document.getElementById("popupDisplayCusDetails"));
+    // modal.hide();
+
+    clearAllItemsInCart();
 }
 
 
