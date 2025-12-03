@@ -27,7 +27,9 @@
             </div>
         </div>
 
-        <div class="col-5"></div>
+        <div class="col-5 d-flex align-middle justify-content-end">
+            <button class="navMyOrdersBtn" id="navMyOrdersBtn" onclick="openMyOrdersPage()">My Orders</button>
+        </div>
 
         <div class="col-3 d-flex gap-4 justify-content-end">
             <p id="cartMsg" style="display: none;">closed</p>
@@ -53,7 +55,7 @@
     </div>
 
 
-    <div class="conatiner-fluid mt-lg-5">
+    <div class="conatiner-fluid mt-lg-5" id="homePageDiv">
 
         <div class="row">
             <!-- //////////////////////////////////////////  left side //////////////////////////////////////////////// -->
@@ -61,34 +63,49 @@
             <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
             <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-            <div class="col-lg-12 col-sm-8 " id="leftSideDivProductCard">
+            <div class="col-lg-12 col-sm-12 " id="leftSideDivProductCard">
+                <div class="row mt-lg-4 mx-lg-5 d-flex border-bottom shadow-sm justify-content-center">
+                    <div class="col-lg-1"></div>
 
-                <div class="row mt-4">
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="heroNav d-flex text-center border-bottom shadow-sm justify-content-center">
-                            <ul class="d-flex list-unstyled gap-lg-5">
-                                <li class="nav-item">
-                                    <button class="heroNavBtns active" id="heroNavBtn1">All</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button class="heroNavBtns" id="heroNavBtn2">New Arrivals</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button class="heroNavBtns" id="heroNavBtn3">Tops</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button class="heroNavBtns" id="heroNavBtn4">Bottoms</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button class="heroNavBtns" id="heroNavBtn5">OutWare</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button class="heroNavBtns" id="heroNavBtn6">Accessories</button>
-                                </li>
-                            </ul>
+                    <div class="col-lg-10">
+
+                        <div class="row heroNav">
+
+                            <div class="col-lg-2">
+                                <button class="heroNavBtns" onclick="filterBy(`All`)" id="heroNavBtn1">All</button>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <button class="heroNavBtns" onclick="filterBy(`Tops`)" id="heroNavBtn3">Tops</button>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <button class="heroNavBtns" onclick="filterBy(`Pants`)" id="heroNavBtn4">Pants</button>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <button class="heroNavBtns" onclick="filterBy(`Bags`)" id="heroNavBtn4">Bags</button>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <button class="heroNavBtns" onclick="filterBy(`Shoes`)" id="heroNavBtn5">Shoes</button>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <button class="heroNavBtns" onclick="filterBy(`Accessories`)"
+                                    id="heroNavBtn6">Accessories</button>
+                            </div>
                         </div>
+
+
                     </div>
+
+                    <div class="col-lg-1"></div>
+
+
                 </div>
+
+
 
                 <div class="container">
                     <div class="row mt-5 gap-0 mx-5" id="allProductCardGenerate">
@@ -129,7 +146,7 @@
                             <div class="col-lg-6">
                                 <div class="addDiscountDiv">
                                     <button id="addDiscountBtn" onclick="showDiscountField()">Add Discount</button>
-                                    <input id="addDiscountTxt" type="text" placeholder="Enter Discount..."
+                                    <input id="addDiscountTxt" type="text" placeholder="Enter Discount Code..."
                                         style="display:none;">
                                 </div>
                             </div>
@@ -273,6 +290,30 @@
     </div>
     <!-- =============================================================== -->
 
+    <!-- ////////////////////////////////////////My Orders Page ////////////////////////////////////////////// -->
+
+    <div class="container mt-lg-5" id="myOrdersPageDiv">
+        <div class="row mt-lg-3">
+            <div class="col-lg-7">
+                <h3 class="myOrdersTitle">My Orders</h3>
+            </div>
+            <div class="col-lg-5">
+                <div class="btn-wrapper d-flex justify-content-end">
+                    <svg class="placeNewOrderSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <path
+                            d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                    </svg>
+                    <button id="placeNewOrderBtn" onclick="loadHomePageFromMyOrders()">Place New Order</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="ordersCardStructure">
+        </div>
+
+    </div>
+
+
 
 
 
@@ -280,6 +321,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="assets/js/home.js"></script>
+    <script src="assets/js/loadPages.js"></script>
 </body>
 
 </html>
